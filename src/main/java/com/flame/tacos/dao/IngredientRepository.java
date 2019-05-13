@@ -1,11 +1,9 @@
 package com.flame.tacos.dao;
 
 import com.flame.tacos.entity.Ingredient;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IngredientRepository {
-    Iterable<Ingredient> findAll();
+public interface IngredientRepository
+        extends CrudRepository<Ingredient, String> {
 
-    Ingredient findById(String id);
-
-    Ingredient save(Ingredient ingredient);
 }
