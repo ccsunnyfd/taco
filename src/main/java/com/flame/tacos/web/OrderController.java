@@ -3,6 +3,8 @@ package com.flame.tacos.web;
 
 import com.flame.tacos.dao.OrderRepository;
 import com.flame.tacos.entity.Order;
+import com.flame.tacos.entity.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +32,13 @@ public class OrderController {
 
     @PostMapping
     public String processOrder(@Valid Order order, Errors errors,
-                               SessionStatus sessionStatus) {
+                               SessionStatus sessionStatus,
+                               @AuthenticationPrincipal User user) {
         if (errors.hasErrors()) {
             return "orderForm";
         }
+
+        order.setUser(user);
 
         orderRepo.save(order);
         sessionStatus.setComplete();
