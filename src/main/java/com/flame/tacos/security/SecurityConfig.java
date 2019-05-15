@@ -27,6 +27,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // Just for h2-console visit
+                .csrf().ignoringAntMatchers("/h2-console/**")
+                .and()
+                .headers().frameOptions().sameOrigin()
+
+                .and()
+                //.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/design", "/orders")
                 .hasRole("USER")
