@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql:true
+
+logging:
+  file: logs/TacoCloud.log
+  level:
+    root: WARN
+    org.springframework.security: INFO
