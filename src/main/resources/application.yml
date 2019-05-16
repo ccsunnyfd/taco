@@ -7,3 +7,7 @@ logging:
   level:
     root: WARN
     org.springframework.security: INFO
+
+taco:
+  orders:
+    pageSize: 10
