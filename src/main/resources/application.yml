@@ -1,6 +1,9 @@
 spring:
   jpa:
     show-sql:true
+  data:
+    rest:
+      base-path: /api
 
 logging:
   file: logs/TacoCloud.log
